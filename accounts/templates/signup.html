@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Регистрація
+{% endblock %}
+
+{% block link %}
+    <li class="nav-item">
+        <a href="{% url 'home' %}" class="nav-link text-white">Головна</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'news_home' %}" class="nav-link text-white">Новини</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="container text-white">
+    <div class="features">
+        <h1>Регистрація</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <span>{{ error }}</span>
+            <button type="submit" class="btn btn-info btn-create">Зареєструватися</button>
+        </form>
+        <p>Вже є аккаунт? Увійдіть!</p>
+        <a href="{% url 'login' %}" class="text-white">
+            <button class="btn btn-info">Log in</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

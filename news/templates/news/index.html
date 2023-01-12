@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Новини
+{% endblock %}
+
+{% block link %}
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a href="{% url 'news_create' %}" class="nav-link text-white">
+            <button class="btn btn-info">Додати новину</button>
+        </a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a href="{% url 'login' %}" class="nav-link text-white">
+            <button class="btn btn-info">Log in</button>
+        </a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+        <a href="{% url 'home' %}" class="nav-link text-white">Головна</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="container text-white">
+    {% if news %}      
+        {% for el in news %}
+            <div class="alert alert-warning">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.anons }}</p>
+                <p>{{ el.img }}</p>
+                <img src="static/news/media/{{ el.img }}" alt="">
+                <a href="{% url 'news_detail' el.id %}" class="btn btn-info">Прочитати</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Немає записів!</p>
+    {% endif %}
+</div>
+{% endblock %}

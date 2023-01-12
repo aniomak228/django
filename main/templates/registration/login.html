@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Логін
+{% endblock %}
+
+{% block link %}
+    <li class="nav-item">
+        <a href="{% url 'home' %}" class="nav-link text-white">Головна</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'news_home' %}" class="nav-link text-white">Новини</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="container text-white">
+    <div class="features">
+        <h1>Авторизація</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <span>{{ error }}</span>
+            <button type="submit" class="btn btn-info btn-create">Увійти</button>
+        </form>
+        <p>Немає аккаунта? Зареєструйтесь!</p>
+        <a href="{% url 'signup' %}" class="text-white">
+            <button class="btn btn-info">Sign Up</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

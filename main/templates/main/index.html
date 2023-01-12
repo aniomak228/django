@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Головна
+{% endblock %}
+
+{% block link %}
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a href="{% url 'news_create' %}" class="nav-link text-white">
+                <button class="btn btn-info">Додати новину</button>
+            </a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link text-white">
+                <button class="btn btn-info">Log in</button>
+            </a>
+        </li>
+    {% endif %}
+    <li class="nav-item">
+        <a href="{% url 'news_home' %}" class="nav-link text-white">Новини</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="container text-white">
+        {% if user.is_authenticated %}
+            <h3>Привіт {{ user.username }}!</h3>
+            <a href="{% url 'logout' %}" class="text-white">
+                <button class="btn btn-info">Log out</button>
+            </a>
+        {% else %}
+            <p>Ви не авторизовані! Щоб додавати новини будь ласка авторизуйтесь!</p>
+            <a href="{% url 'login' %}" class="text-white">
+                <button class="btn btn-info">Log in</button>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Новини
+{% endblock %}
+
+{% block link %}
+{% if user.is_authenticated %}
+    <li class="nav-item">
+        <a href="{% url 'news_create' %}" class="nav-link text-white">
+            <button class="btn btn-info">Додати новину</button>
+        </a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a href="{% url 'login' %}" class="nav-link text-white">
+            <button class="btn btn-info">Log in</button>
+        </a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+        <a href="{% url 'home' %}" class="nav-link text-white">Головна</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'news_home' %}" class="nav-link text-white">Новини</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="container text-white">
+    <div class="features">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.date }}</p>
+        <p>{{ article.text }}</p>
+        <p>{{ article.img }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+body{
+    background: rgb(30, 30, 30);
+}
+
+.nav-item{
+    color: white;
+}
+
+form{
+    width: 600px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+}
+
+.btn-create{
+    font-size: 20px;
+}
+
+.form-control{
+    font-size: 20px;
+}
